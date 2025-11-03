@@ -1,0 +1,17 @@
+{
+  "name": "crypto-investment-workspace",
+  "private": true,
+  "workspaces": [
+    "server",
+    "vite-project"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,client -c yellow,cyan \"npm run dev -w server\" \"npm run dev -w vite-project\"",
+    "dev:server": "npm run dev -w server",
+    "dev:client": "npm run dev -w vite-project",
+    "build": "npm run build -w vite-project"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

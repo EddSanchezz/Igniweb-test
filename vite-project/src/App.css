@@ -1,0 +1,48 @@
+/* Variables de tema (modo oscuro) */
+:root{
+  --bg:#0b1220; --panel:#121a2a; --text:#e6edf3; --muted:#a1a8b3; --accent:#3b82f6; --pos:#16a34a; --neg:#dc2626;
+}
+*{ box-sizing:border-box }
+html{ height:100%; background:var(--bg) }
+body,#root{ height:100% }
+body{ margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; background:var(--bg); color:var(--text) }
+.container{ max-width:1200px; margin:0 auto; padding:24px }
+header h1{ margin:0 0 4px; font-size:28px }
+.subtitle{ margin:0 0 16px; color:var(--muted) }
+
+/*
+  Layout principal
+  - Desktop: dos columnas (izquierda buscador+lista, derecha gráfica)
+  - Móvil/tablet: una columna (la gráfica queda debajo)
+*/
+.layout{ display:grid; grid-template-columns: minmax(280px, 420px) 1fr; gap:16px; align-items:start }
+@media (max-width: 900px){ .layout{ grid-template-columns: 1fr } }
+
+.search{ position:relative; margin:12px 0 24px }
+.search-input{ width:100%; padding:12px 14px; border-radius:10px; border:1px solid #273043; background:var(--panel); color:var(--text) }
+.results{ position:absolute; z-index:5; margin:6px 0 0; padding:8px; list-style:none; background:var(--panel); border:1px solid #273043; border-radius:10px; width:100%; max-height:260px; overflow:auto }
+.results li{ display:flex; align-items:center; justify-content:space-between; gap:8px; padding:8px; border-bottom:1px solid #1e293b }
+.results li:last-child{ border-bottom:0 }
+.results button{ background:var(--accent); color:#fff; border:none; border-radius:8px; padding:6px 10px; cursor:pointer }
+.hint{ color:var(--muted); font-size:14px; padding:8px 0 }
+
+.watchlist{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:12px }
+.coin-card{ background:var(--panel); border:1px solid #273043; border-radius:12px; padding:12px; cursor:pointer }
+.coin-card .coin-header{ display:flex; gap:8px; align-items:center; margin-bottom:6px }
+.coin-card .name{ color:var(--muted); font-size:12px }
+.coin-card .price{ font-weight:700; font-size:20px; margin:8px 0 }
+.coin-card .meta{ display:flex; align-items:center; gap:10px; font-size:12px }
+.change{ padding:2px 6px; border-radius:6px; background:#243244 }
+.change.pos{ color:#d1fae5; background: #14532d }
+.change.neg{ color:#fee2e2; background: #7f1d1d }
+.volume{ color:var(--muted) }
+.remove{ margin-top:8px; background:transparent; color:#fca5a5; border:1px solid #7f1d1d; border-radius:8px; padding:6px 10px; cursor:pointer }
+
+section{ margin-top:28px }
+.chart{ background:var(--panel); border:1px solid #273043; border-radius:12px; padding:12px }
+.chart-toolbar{ display:flex; gap:8px; margin-bottom:8px }
+.chart-toolbar button{ background:#1f2937; color:var(--text); border:1px solid #374151; border-radius:8px; padding:6px 10px; cursor:pointer }
+.chart-toolbar button.active{ background:var(--accent); border-color:var(--accent) }
+
+/* Contenedor cuadrado para el gráfico (ancho = alto) */
+.chart-square{ width:100%; aspect-ratio: 1 / 1; min-height: 220px }
